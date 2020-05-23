@@ -1,0 +1,9 @@
+.posts {
+    padding: 1rem 0;
+}
+
+.center {
+    width: 85vw;
+    margin: 0 auto;
+    max-width: 730px;
+}

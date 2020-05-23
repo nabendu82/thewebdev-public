@@ -1,0 +1,106 @@
+.template {
+    width: 100vw;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: var(--mainWhite);
+}
+
+.link {
+    border: 1px solid var(--mainBlack);
+    padding: 4px 8px;
+    display: inline-block;
+    color: var(--mainBlack);
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 2rem;
+}
+.link:hover {
+    background: var(--mainBlack);
+    color: var(--mainWhite);
+}
+.info {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.tagLink {
+    color: var(--mainWhite);
+    text-decoration: none;
+    margin: 0 2px;
+    padding: 4px 8px;
+    border-radius: 2%;
+    transition: all 0.3s ease-in-out;
+}
+.tagLink:nth-of-type(1){
+    background: #663A74;
+}
+.tagLink:nth-of-type(2){
+    background: #459049;
+}
+.tagLink:nth-of-type(3){
+    background: #4234A2;
+}
+.tagLink:hover {
+    color: var(--darkGrey);
+}
+.seriesLink{
+    color: var(--mainWhite);
+    text-decoration: none;
+    background: #4CAAB3;
+    padding: 8px 10px;
+    border-radius: 2%;
+    transition: all 0.3s ease-in-out;
+}
+.seriesLink:hover {
+    color: var(--darkGrey);
+}
+.seriesText{
+    margin: 1rem auto;
+}
+.info h1 {
+    letter-spacing: 5px;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+    font-size: 48px;
+}
+.info h4 {
+    letter-spacing: 5px;
+    text-transform: capitalize;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+.content {
+    margin: 2rem 0;
+}
+.content h2 {
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+}
+.content p {
+    margin: 0.95em 0 1.2em;
+    padding: 0.2em;
+}
+
+.content img{
+    width: 100%;
+    height: auto;
+}
+
+.author h1 {
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+    font-size: 48px;
+}
+
+.author a {
+    display: inline-block;
+    margin: 0.5rem;
+    font-size: 2rem;
+    color: var(--mainBlack);
+    transition: var(--mainTransition);
+}
+.author a:hover {
+    color: var(--darkGrey);
+}

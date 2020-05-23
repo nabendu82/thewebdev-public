@@ -1,0 +1,15 @@
+.template {
+    width: 100vw;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: var(--mainWhite);
+    min-height:80vh;
+}
+
+.template h1 {
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+    font-size: 36px;
+}
+

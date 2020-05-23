@@ -1,0 +1,133 @@
+---
+title: Basics of Flexbox — 3
+slug: basics-of-flexbox-3
+image: ./basics-flexbox-3.jpg
+date: 2018-05-27
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Flexbox-basics
+tags: ['css', 'beginners', 'webdev']
+---
+You can find the codepen used in this part [here](https://codepen.io/nabendu82/pen/XqvyVa/).
+
+We will start with flex container property align-content. It basically aligns items across the cross-axis, when there are extra space.
+
+**Note:** this property has no effect when there is only one line of flex items.
+
+The basic HTML used is -
+```
+<div class=”container”>
+ <div class=”box box1">1</div>
+ <div class=”box box2">2</div>
+ <div class=”box box3">3</div>
+ <div class=”box box4">4</div>
+ <div class=”box box5">5</div>
+ <div class=”box box6">6</div>
+ <div class=”box box7">7</div>
+ <div class=”box box8">8</div>
+ <div class=”box box9">9</div>
+ <div class=”box box10">10</div>
+ </div>
+```
+And the basic CSS used is -
+```
+/* Some default styles to make each box visible */
+.box {
+ color:white;
+ font-size: 100px;
+ text-align: center;
+ text-shadow:4px 4px 0 rgba(0,0,0,0.1);
+ padding:10px;
+}
+/* Colours for each box */
+.box1 { background:#1abc9c;}
+.box2 { background:#3498db;}
+.box3 { background:#9b59b6;}
+.box4 { background:#34495e;}
+.box5 { background:#f1c40f;}
+.box6 { background:#e67e22;}
+.box7 { background:#e74c3c;}
+.box8 { background:#bdc3c7;}
+.box9 { background:#2ecc71;}
+.box10 { background:#16a085;}
+/* We start writing out flexbox here. The above is just page setup */
+.container {
+ display:flex;
+ border:10px solid mistyrose;
+ height:100vh;
+}
+.box {
+ width:33.333%;
+}
+```
+This gives as the below -
+
+![The basics](https://cdn-images-1.medium.com/max/2864/1*QbhGAzGwqKLk-tdhaNV9sg.png)*The basics*
+
+We will require the flex-wrap property to spread it to multiple lines, which is required to use align-content. Let’s do it.
+```
+.container {
+ display:flex;
+ border:10px solid mistyrose;
+ height:100vh;
+ flex-wrap: wrap;
+}
+```
+Which results in -
+
+![flex-wrap: wrap;](https://cdn-images-1.medium.com/max/2868/1*8ualuFKcKmh62z7slsplWw.png)*flex-wrap: wrap;*
+
+Now, we are ready to use the align-content property. According to the CSS trick [article](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) , it contains the similar set of properties as justify-content. We will go through them one by one and it will be self-explanatory.
+```
+.container {
+ display:flex;
+ border:10px solid mistyrose;
+ height:100vh;
+ flex-wrap: wrap;
+ align-content: flex-start;
+}
+```
+![align-content: flex-start;](https://cdn-images-1.medium.com/max/2868/1*1In_GWrB7NDS5BIiSjlH0Q.png)*align-content: flex-start;*
+```
+.container {
+ display:flex;
+ border:10px solid mistyrose;
+ height:100vh;
+ flex-wrap: wrap;
+ align-content: flex-end;
+}
+```
+![align-content: flex-end;](https://cdn-images-1.medium.com/max/2870/1*yxYRMGtMTvCuERmUwMdplA.png)*align-content: flex-end;*
+```
+.container {
+ display:flex;
+ border:10px solid mistyrose;
+ height:100vh;
+ flex-wrap: wrap;
+ align-content: center;
+}
+```
+![align-content: center;](https://cdn-images-1.medium.com/max/2870/1*j40RwQ_wdgaMF110utsGvw.png)*align-content: center;*
+```
+.container {
+ display:flex;
+ border:10px solid mistyrose;
+ height:100vh;
+ flex-wrap: wrap;
+ align-content: space-between;
+}
+```
+![align-content: space-between;](https://cdn-images-1.medium.com/max/2872/1*0daKweS2SHh16qBdLiZO7g.png)*align-content: space-between;*
+```
+.container {
+ display:flex;
+ border:10px solid mistyrose;
+ height:100vh;
+ flex-wrap: wrap;
+ align-content: space-around;
+}
+```
+![align-content: space-around;](https://cdn-images-1.medium.com/max/2874/1*zraTWf3ZR9WzfDU6XTk89Q.png)*align-content: space-around;*
+

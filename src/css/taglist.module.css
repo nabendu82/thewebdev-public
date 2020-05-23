@@ -1,0 +1,43 @@
+.tagList {
+    padding: 1rem 0.5rem;
+}
+
+.boxTag{
+    box-shadow: 2px 2px 6px 0px rgba(142,142,142,1);
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    width: auto;
+    height: 600px;
+    margin: 0 auto;
+    padding-top: 1rem;
+    background: var(--mainWhite);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    overflow-y: auto
+}
+
+.link {
+    border: 1px solid var(--mainBlack);
+    padding: 4px 8px;
+    color: var(--mainBlack);
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all 0.3s ease-in-out;
+    width:8rem;
+    margin-bottom: 1rem;
+
+}
+.link:hover {
+    background: var(--mainBlack);
+    color: var(--mainWhite);
+}
+
+.boxTag h2 {
+    font-size: 30px;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
