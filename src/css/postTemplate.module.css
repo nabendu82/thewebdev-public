@@ -104,3 +104,14 @@
 .author a:hover {
     color: var(--darkGrey);
 }
+
+.code__block {
+    padding: 10px 0;
+    background-color: #F2F2F2;
+    overflow-x: auto;
+}
+
+.image__small {
+    width: 60%;
+    margin: 0 auto;
+}

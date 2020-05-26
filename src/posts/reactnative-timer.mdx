@@ -1,0 +1,106 @@
+---
+title: Simple Timer app with React Native
+slug: reactnative-simple-timer-app
+image: ./reactnative-timer.jpeg
+date: 2019-09-17
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+tags: ['reactnative', 'react', 'webdev']
+---
+import styles from "../css/postTemplate.module.css"
+
+Continuing my React Native journey, i found a great site [https://learn.handlebarlabs.com/](https://learn.handlebarlabs.com/) by Spencer Carli. This post is based on one of the free course by him.
+
+Let’s head over to a terminal and type expo init TimerReactNative
+
+Press enter for blank in the selection.
+
+![init](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389543/TimerReactnative/1_ybleij.png)*init*
+
+In the next screen, you can give the same name as the project. For my case it is TimerReactNative.
+
+![Timer](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389543/TimerReactnative/2_qsyavt.png)*Timer*
+
+Then change into the directory and do a npm start
+
+![start](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389542/TimerReactnative/3_qqre6i.png)*start*
+
+The project will be started by expo on a web-browser.
+
+![Web browser](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389542/TimerReactnative/4_j3egz5.png)*Web browser*
+
+Next, open the project in VSCode and create a new folder App and a file index.js inside it.
+
+![index.js](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389542/TimerReactnative/5_dvrfla.png)*index.js*
+
+Copy all content from App.js to index.js and delete App.js
+
+![updated index.js](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389542/TimerReactnative/6_yryga2.png)*updated index.js*
+
+Next, open the App on a physical device. I had mentioned the steps in my blog for [Restaurant Search app](https://dev.to/nabendu82/restaurant-search-app-with-react-native-using-zomato-api-5g5b).
+
+You can also open the app in the lap by configuring Android emulator. I have mentioned the steps in my previous blog to [Setup Android Emulator on Mac](https://dev.to/nabendu82/android-emulator-setup-for-expo-on-mac-4n1j).
+
+Next, we will change our index.js to display a button on the center of screen.
+
+![index.js](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389542/TimerReactnative/7_fgpari.png)*index.js*
+
+It will show below in our App.
+
+<div className={styles.image__small}>
+
+![Android App](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389540/TimerReactnative/8_pzmguo.png)*Android App*
+
+</div>
+
+Next, we will make the button round with center align text. In react-native, we have an element Dimensions by which we can use screen width as measurement.
+
+![Dimensions](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389542/TimerReactnative/9_mt9ktz.png)*Dimensions*
+
+By the above changes our button is perfectly round and text centered.
+
+<div className={styles.image__small}>
+
+![Round button](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389541/TimerReactnative/10_l5k3nz.png)*Round button*
+
+</div>
+
+Next, we will add logic to display timer text above the button. Here, we are using useState hook to store a variable remainingSecs and also keeping a flag isActive.
+
+We are using setInterval inside useEffect hook to update the value of remainingSecs every second and re-rended the component.
+
+We are also using a getRemaining function to get minutes and seconds from a time passed.
+
+![useState](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389541/TimerReactnative/11-1_st5272.png)*useState*
+
+We are then calling toggle function on pressing of the Start button. We are stopping the timer and also changing the text to Pause. Also giving some style to the text.
+
+![toggle](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389541/TimerReactnative/11-2_yj6gjv.png)*toggle*
+
+With the above code, we were getting a wrong type of display. Our passed 5 was shown as 0:5. To show it as 00:05 , we will use another function formatNumber
+
+![formatNumber](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389541/TimerReactnative/12_nclpen.png)*formatNumber*
+
+Now, our App looks like below.
+
+<div className={styles.image__small}>
+
+![TimerText](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389541/TimerReactnative/13_hxdo09.png)*TimerText*
+
+</div>
+
+Lastly, we will add a Reset button. We are also reusing the styles by using [] in style.
+
+![Reset](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389541/TimerReactnative/14_yzc63q.png)*Reset*
+
+This completes our App and it looks like below.
+
+<div className={styles.image__small}>
+
+![Final App](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389541/TimerReactnative/15_f1g2zl.png)*Final App*
+
+</div>
+
+Hope, you liked the app. You can find the code for the same in this github [link](https://github.com/nabendu82/TimerReactNative).
