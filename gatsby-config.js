@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `TheWebDev`,
+    title: `The Web Dev`,
     author: `Nabendu Biswas`,
-    description: `Web-development blog posts to take your dev skills to next level`,
+    description: `Learn to built web-apps in React, Gatsby, React-native and also firefox extensions and more`,
     twitterUsername: "@nabendu82",
     image:'/thewebdev.jpg',
     siteUrl: `https://thewebdev.tech/`,

@@ -91,7 +91,7 @@ export default () => {
 
     return (
         <Layout>
-            <SEO title="Home" />
+            <SEO title="Learn to built web-apps in React, Gatsby, React-native" />
             <div className={styles.mobileMenu}>
                 <button type="button" className={styles.logoBtn} onClick={toggleLeftMenu} >
                     <FaSortAmountDown className={styles.logoIcon} />

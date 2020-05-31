@@ -21,7 +21,7 @@ const SEO = ({ title, description }) => {
     const { site } = useStaticQuery(getData);
     const { siteTitle, siteDesc, siteUrl, image, twitterUsername } = site.siteMetadata;
     return (
-        <Helmet htmlAttributes={{ lang: "en" }} title={`${title} | ${siteTitle}`}>
+        <Helmet htmlAttributes={{ lang: "en" }} title={`${siteTitle} | ${title}`}>
             <meta name="description" content={description || siteDesc} />
             <meta name="image" content={image} />
             <meta name="twitter:card" content="summary_large_image" />
