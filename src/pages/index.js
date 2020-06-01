@@ -4,7 +4,6 @@ import styles from "../css/home.module.css";
 import PostList from "../components/PostList";
 import TagList from "../components/TagList";
 import { graphql, useStaticQuery } from "gatsby";
-import cover from "../images/Gatsby.png";
 import { FaSortAmountUp, FaSortAmountDown } from "react-icons/fa";
 import Menu from "../components/Menu/Menu";
 import { useOnClickOutside } from "../constants/hooks";
@@ -122,7 +121,7 @@ export default () => {
                     <PostList posts={posts} />
                 </section>
                 <section className={styles.left__sec}>
-                    <Advert imgPath={cover} />
+                    <Advert />
                     <SeriesList seriesList={posts} />
                 </section>
             </div>

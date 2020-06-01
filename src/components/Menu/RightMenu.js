@@ -1,6 +1,5 @@
 import React from 'react';
 import Advert from '../Advert';
-import cover from "../../images/Gatsby.png";
 import { StyledRightMenu } from './RightMenu.styled';
 import { graphql, useStaticQuery } from "gatsby";
 import SeriesList from '../SeriesList';
@@ -23,7 +22,7 @@ const RightMenu = ({ open }) => {
     const series = response.allMdx.edges;
     return (
         <StyledRightMenu open={open}>
-            <Advert imgPath={cover} />
+            <Advert />
             <SeriesList seriesList={series} />
         </StyledRightMenu>
     )

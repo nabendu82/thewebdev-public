@@ -14,11 +14,8 @@
     text-align: center;
 }
 
-.coverImg{
-    margin-top: 1rem;
-    width: 100%;
-    max-width:250px;
-    height: 300px;
+.advert1 > div {
+    margin-top: 0.25rem;
 }
 
 .advert1 p{
