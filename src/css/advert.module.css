@@ -18,14 +18,14 @@
     margin-top: 0.25rem;
 }
 
-.advert1 p{
+.advert1 a{
     display: block;
-    padding: 1rem 1.25rem;
     text-decoration: none;
-    text-transform: capitalize;
-    color: var(--mainBlack);
-    -webkit-transition: var(--mainTransition);
-    transition: var(--mainTransition);
     font-weight: bold;
-    letter-spacing: var(--mainSpacing);
+    text-decoration: none;
+    color: var(--mainWhite);
+    background: #4CAAB3;
+    padding: 8px 10px;
+    border-radius: 2%;
+    transition: all 0.3s ease-in-out;
 }

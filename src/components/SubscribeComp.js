@@ -7,7 +7,7 @@ const SubscribeComp = () => {
         <section className={styles.sponserAds}>
             <div className={styles.advert1}>
                 <Subscribe />
-                <p>Also, details about Gatsby Cookbook</p>
+                <p>Buy Gatsby Cookbook on <a href="https://leanpub.com/gatsbycookbook" target="_blank" rel="noopener noreferrer">Leanpub</a></p>
             </div>
         </section>
     )
