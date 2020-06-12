@@ -1,0 +1,329 @@
+---
+title: Build a Firefox extension step-by-step-1
+slug: firefox-extension-1
+image: ./firefox-extension-1.jpg
+date: 2020-03-22
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Firefox-addons
+tags: ['javascript', 'beginners', 'webdev']
+---
+import styles from "../css/postTemplate.module.css"
+
+Two years back i created a lot of firefox extensions(23 in total), also known as add-ons. Slowly, i moved to other side projects and forgot about them. Recently, i got some positive reviews of some of the extensions and received email notifications.
+
+I wanted to practice some Vanilla JS next and as always i do, i want to make some projects in it. Since, the firefox extensions are created using HTML, CSS and Vanilla JS they are awesome way to practice Vanilla JS.
+
+You can find all of my firefox extension [here](https://addons.mozilla.org/en-GB/firefox/user/14172700/). So, go ahead and install them.
+
+![My Extensions](https://ik.imagekit.io/thewebdev/FirefoxAddons/1/1_thuDW5E9k.png)*My Extensions*
+
+One more thing before we dig into coding, which i had to confess. I lost access to my mozilla account, in which two step authentication was enabled. I lost the authenticator app on my old phone and also the recovery keys.
+
+So, i cannot update by existing extensions. I will add all of them again with some updates and blog the whole process.
+
+The best place to learn about creating firefox extension is [this](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/What_are_WebExtensions) link from mdn. Also, there is [this](https://www.youtube.com/watch?v=hkOTAmmuv_4&list=PLRqwX-V7Uu6bL9VOMT65ahNEri9uqLWfS) awesome youtube series from **The Coding Train**.
+
+We are going to create a **Dynamic Travel Theme** and publish it to Mozilla addons site. The entry point and the most important file in any extension is the **manifest.json** file. You can read more about it [here](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Anatomy_of_a_WebExtension). It mainly contains metadata about the extension and also provide pointers to other files in the extension.
+
+So, open your code editor and create the **manifest.json** file. Put the below content in it.
+
+![manifest.json](https://ik.imagekit.io/thewebdev/FirefoxAddons/1/2_XEoEmqS8B.png)*manifest.json*
+
+The most important thing in the **manifest.json** file, is the background script. This script is very important for this plugin, as we need to run it forever in the background to check the user time and change the theme. You can read more about background scripts [here](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Anatomy_of_a_WebExtension#Background_scripts).
+
+So, create a file **background.js** in the folder. First just add some console log in it, as we need to check whether it is working.
+
+![background.js](https://ik.imagekit.io/thewebdev/FirefoxAddons/1/3_HauFnYRPgl.png)*background.js*
+
+Next, open your firefox browser and go to type the below url. After that click on **Load Temporary Add-on…** button
+
+<div className={styles.code__block}>
+
+    about:debugging#/runtime/this-firefox
+
+</div>
+
+![debugger](https://ik.imagekit.io/thewebdev/FirefoxAddons/1/4_E17wHe-2li.png)*debugger*
+
+After that navigate to your folder and click on **manifest.json** file.
+
+![manifest.json](https://ik.imagekit.io/thewebdev/FirefoxAddons/1/5_Ara363U8vh.png)*manifest.json*
+
+Next, our extension is loaded so click on the **Inspect** button.
+
+![Travel Theme](https://ik.imagekit.io/thewebdev/FirefoxAddons/1/6_i1WAODn29.png)*Travel Theme*
+
+And we will get the console log in the new tab. Note, that the background script doesn’t show the log in browser console.
+
+![log](https://ik.imagekit.io/thewebdev/FirefoxAddons/1/7_WmCvh9-gmD.png)*log*
+
+Let’s update the **background.js** to add an eventlistener. We will do this by **browser.alarms.onAlarm**. You can read more about it [here](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/alarms/onAlarm).
+
+Now, we are firing the function **checkTime()** every 5 minutes with the help of **browser.alarms.create**. You can read more about it [here](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/alarms/create).
+
+We are also calling the function **checkTime()** initially once, as we need to show our theme when the extension starts for the first time.
+
+![background.js](https://ik.imagekit.io/thewebdev/FirefoxAddons/1/8_H60JQM1Uek.png)*background.js*
+
+Head over to the extension again and press the **Reload** button, for the new changes to update.
+
+![Reload](https://ik.imagekit.io/thewebdev/FirefoxAddons/1/9_h3LPXgjK4q.png)*Reload*
+
+Now, click on **Load Temporary Add-on…** button and the Inside checkTime log will keep on increasing every 5 minutes.
+
+![Log](https://ik.imagekit.io/thewebdev/FirefoxAddons/1/10_rSMlMrdN-t.png)*Log*
+
+Next, let’s update our function **checkTime()** to get the hours, and then pass the hours to the new **setTheme()** function.
+
+Now, the **setTheme()** function uses **browser.theme** to update the theme. You can read more about it [here](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/theme/update).
+
+![setTheme()](https://ik.imagekit.io/thewebdev/FirefoxAddons/1/11_V0g-TbmoyB.png)*setTheme()*
+
+Next, we need to create the themes object, in which each theme will get passed.
+
+<div className={styles.code__block}>
+
+```
+    var currentTheme = '';
+
+    const themes = {
+        'travel0': {
+            images: {
+                theme_frame: 'sun.jpg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: '#111',
+            }
+        },
+        'travel1': {
+            images: {
+                theme_frame: 'travel1.jpg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'white',
+            }
+        },
+        'travel2': {
+            images: {
+                theme_frame: 'travel2.jpg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'black',
+            }
+        },
+        'travel3': {
+            images: {
+                theme_frame: 'travel3.jpg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'black',
+            }
+        },
+        'travel4': {
+            images: {
+                theme_frame: 'travel4.jpg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'black',
+            }
+        },
+        'travel5': {
+            images: {
+                theme_frame: 'travel5.jpg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'black',
+            }
+        },
+        'travel6': {
+            images: {
+                theme_frame: 'travel6.jpg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'white',
+            }
+        },
+        'travel7': {
+            images: {
+                theme_frame: 'travel7.jpg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'black',
+            }
+        },
+        'travel8': {
+            images: {
+                theme_frame: 'travel8.jpg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'white',
+            }
+        },
+        'travel9': {
+            images: {
+                theme_frame: 'travel9.jpg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'black',
+            }
+        },
+        'travel10': {
+            images: {
+                theme_frame: 'travel10.jpg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'black',
+            }
+        },
+        'travel11': {
+            images: {
+                theme_frame: 'travel11.jpeg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'black',
+            }
+        },
+        'travel12': {
+            images: {
+                theme_frame: 'travel12.jpeg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'black',
+            }
+        },
+        'travel13': {
+            images: {
+                theme_frame: 'travel13.jpg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'white',
+            }
+        },
+        'travel14': {
+            images: {
+                theme_frame: 'travel14.jpg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'black',
+            }
+        },
+        'travel15': {
+            images: {
+                theme_frame: 'travel15.png',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'black',
+            }
+        },
+        'travel16': {
+            images: {
+                theme_frame: 'travel16.jpg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'white',
+            }
+        },
+        'travel17': {
+            images: {
+                theme_frame: 'travel17.jpg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'black',
+            }
+        },
+        'travel18': {
+            images: {
+                theme_frame: 'travel15.jpeg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'black',
+            }
+        },
+        'travel19': {
+            images: {
+                theme_frame: 'travel19.jpeg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'white',
+            }
+        },
+        'travel20': {
+            images: {
+                theme_frame: 'travel20.png',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'white',
+            }
+        },
+        'travel21': {
+            images: {
+                theme_frame: 'travel21.jpg',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'white',
+            }
+        },
+        'travel22': {
+            images: {
+                theme_frame: 'travel22.png',
+            },
+            colors: {
+                frame: '#CF723F',
+                tab_background_text: 'white',
+            }
+        },
+
+    'travel23': {
+            images: {
+                theme_frame: 'moon.jpg',
+            },
+            colors: {
+                frame: '#000',
+                tab_background_text: '#fff',
+            }
+        }
+    };
+```
+
+</div>
+
+Next, add all the images to the folder.
+
+![Images added](https://ik.imagekit.io/thewebdev/FirefoxAddons/1/12_PMncO0b3s.png)*Images added*
+
+Now, when you reload the extension the theme gets loaded depending on the hour.
+
+![Theme loaded](https://ik.imagekit.io/thewebdev/FirefoxAddons/1/13_rcoUzFDP_j.png)*Theme loaded*
+
+We are done with the extension, but let’s add some icons before publishing to mozilla addons site. Update the below in **manifest.json** file and also add a folder icons containing those icons.
+
+![manifest.json](https://ik.imagekit.io/thewebdev/FirefoxAddons/1/14_Z8zujb8w5V.png)*manifest.json*
+
+We need to publish this extension, but as this post is getting longer will do that in the next post.
+
+You can find the code for this extension [here](https://github.com/nabendu82/Addons/tree/master/TheTravelTheme).

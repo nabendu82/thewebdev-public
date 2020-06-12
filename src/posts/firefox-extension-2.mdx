@@ -1,0 +1,103 @@
+---
+title: Build a Firefox extension step-by-step-2
+slug: firefox-extension-2
+image: ./firefox-extension-2.jpg
+date: 2020-03-23
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Firefox-addons
+tags: ['javascript', 'beginners', 'webdev']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-2 of the series. In this part we will start by submitting the firefox extension, which we created in part-1.
+
+You need to have a firefox account to publish addons to mozilla. Create one and login to any firefox browser.
+
+After that you have to first package your extension. You can find the details of different OS [here](https://extensionworkshop.com/documentation/publish/package-your-extension/). We need to go to our folder, where all of code and other files are and select all of them, and click on **Compress**.
+
+![Compress](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/1_J0PEQCy9k0.png)*Compress*
+
+Now, our zip file is ready and we can submit the addon. I am following instruction from this [link](https://extensionworkshop.com/documentation/publish/submitting-an-add-on/).
+
+As per the instruction, we should go to the link [https://addons.mozilla.org/en-US/firefox/](https://addons.mozilla.org/en-US/firefox/) and click on **Register or Log in** button.
+
+![Login](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/2_bnQtuF_5aS.png)*Login*
+
+On the next screen, need to give some information and then click on **Create My Profile**.
+
+![Create Profile](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/3_90Yw7Yr-P.png)*Create Profile*
+
+After that we are been taken to the same addons screen, and we need to click on **Developer Hub** here.
+
+![Developer Hub](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/4_ImGepjrVi4.png)*Developer Hub*
+
+On the next screen click on **Submit Your First Add-on** button.
+
+![First Add-on](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/5_EDyWrBTAG.png)*First Add-on*
+
+After that we have to agree to two agreements and also check I’m not a robot checkbox. After that click on **Accept** button.
+
+![Firefox Agreement](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/6_lhjjDBghS9.png)*Firefox Agreement*
+
+On the next screen click on **On this site** radio button and click **Continue** button.
+
+![On this site](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/7_Fag4eDJCd.png)*On this site*
+
+On the next screen you will get to select the file. Click on **Select a file..** button and select the zip file, which we had created at the start of this post.
+
+![Submit](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/8_39uL2Xr55W.png)*Submit*
+
+Next, it will take some time to upload the zip file.
+
+![Uploading](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/9_DYAx-gHGoy.png)*Uploading*
+
+After that if there are no errors, you will get the below screen and the **Continue** button will be enabled.
+
+![Finished](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/10_BtUSTLpQta.png)*Finished*
+
+In the next screen, we will be asked if your extension contains any of the below things like minifiers and webpack.
+
+![Minifiers](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/11_4ETEmGawmw.png)*Minifiers*
+
+As, it doesn’t contains any of the above we can click on **No** radio button and then **Continue** button.
+
+![Continue](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/12_A2Q834qJsT.png)*Continue*
+
+After that in the next page, we need to fill some information about the addon.
+
+![Developer](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/13_AELf5HGhnr.png)*Developer*
+
+And then some more information and click on **Submit Version** button.
+
+![More info](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/14_WC2TbsR_O.png)*More info*
+
+In the next Next screen, it will show our Addon have been submitted for review. We can click on the **Manage Listing** button and it will take us to below screen.
+
+![Edit](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/15_6PjgsYNbCG.png)*Edit*
+
+The only thing to add is the images, so once we click on **Edit** button next to the Images we will get below.
+
+![Icon](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/16_iyvDuSu0My.png)*Icon*
+
+The icon which we had in the project can be used and need to give some screenshots.
+
+![Screenshots](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/17_M638oAIhC.png)*Screenshots*
+
+So, once you move to the Developer hub it will show Awaiting Review and it might take some time to be approved. Mozilla team will notify you by email once it is approved.
+
+![Awaiting Review](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/18_BAIcDIzca.png)*Awaiting Review*
+
+The extension got approved in 1 hour and the status got updated in Developer Hub.
+
+![Developer hub](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/19_3-NOBT8n5x.png)*Developer hub*
+
+Now anyone can goto the link [https://addons.mozilla.org/en-US/firefox/addon/the-travel-theme/](https://addons.mozilla.org/en-US/firefox/addon/the-travel-theme/) and install the extension. I did install the extension and it is working fine.
+
+![The Travel Theme](https://ik.imagekit.io/thewebdev/FirefoxAddons/2/20_11mkQ-h6U8.png)*The Travel Theme*
+
+Please show your love by installing the extension and more extensions are coming soon.
+
+This completes part-2 of the series, which was basically the way to submit an extension for approval to addon site.

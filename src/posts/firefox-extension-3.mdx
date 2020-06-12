@@ -1,0 +1,133 @@
+---
+title: Build a Firefox extension step-by-step-3
+slug: firefox-extension-3
+image: ./firefox-extension-3.jpg
+date: 2020-03-28
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Firefox-addons
+tags: ['javascript', 'beginners', 'webdev']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-3 of the series. This part we will start by creating a simple firefox extension, which will show a browser notification every one hour. We are calling it **Please Stand Up.**
+
+So, go ahead and open your code editor and inside a folder create a **manifest.json** file.
+
+Write the below content inside the file. You might have noticed that it is quite similar to the **manifest.json** file, which we had created in [part-1](https://medium.com/@nabendu82/creating-firefox-browser-extensions-1-a48d2753f3d8). The only difference is that we have **browser_action** also, which we are going to use soon in **background.js** file.
+
+![manifest.json](https://ik.imagekit.io/thewebdev/FirefoxAddons/3/1_oX2IDsSLem.png)*manifest.json*
+
+Also, create a folder **icons** and place a file **icon.png** inside it.
+
+![icon.png](https://ik.imagekit.io/thewebdev/FirefoxAddons/3/2_R2H7guKCv.png)*icon.png*
+
+Create a new file **background.js** and add the below content in it. Now, this is a quite familiar code. We are first creating an alarm, which fires every 60 minutes. There is a listener code, which shows the notification and get’s the random quote from getRandom().
+
+Also, there is a listener to clear the notification by clicking on it.
+
+![background.js](https://ik.imagekit.io/thewebdev/FirefoxAddons/3/3_GVdiZeJSR.png)*background.js*
+
+The simple extension is complete, so it’s time to publish it in the mozilla addon store. I will follow the procedure, which i had explained in [part-2](https://medium.com/@nabendu82/creating-firefox-browser-extensions-2-ddf1f236f401) of this series.
+
+My addon was finally approved and made it to the addon store.
+
+![Addon store](https://ik.imagekit.io/thewebdev/FirefoxAddons/3/4_HO2y9FSGuT.png)*Addon store*
+
+Next, we will start another mozilla extension called **Dev Quotes**. As the name suggests, it will send motivating quotes to developers every 60 minutes.
+
+So, go ahead and create a folder **DevQuotes** and inside it another folder **icons**. Inside that folder place an icon and name it **icon64.png**
+
+![icon](https://ik.imagekit.io/thewebdev/FirefoxAddons/3/5_Q15ueln9ph.png)*icon*
+
+Now, create a file **manifest.json** inside the folder **DevQuotes** and put the below content in it. The code is exactly similar to the one **Please Stand Up** as we will be using the same mechanism.
+
+![manifest.json](https://ik.imagekit.io/thewebdev/FirefoxAddons/3/6_CNwDR6rVca.png)*manifest.json*
+
+Next, create a file **background.js** and put the below content in it. Notice, that it is exactly the same code as in **Please Stand Up** , only the quotes changed.
+
+<div className={styles.code__block}>
+
+```
+    var motivationNotification = 'dev-notification';
+
+    browser.alarms.create('', { periodInMinutes: 60 });
+
+    function getRandom() {
+        var quotes = [
+            'Stay Hungry. Stay Foolish. - Steve Jobs',
+            'Good Artists Copy, Great Artists Steal. - Pablo Picasso',
+            'Argue with idiots, and you become an idiot. - Paul Graham',
+            'Be yourself; everyone else is already taken. - Oscar Wilde',
+            'Simplicity is the ultimate sophistication. - Leonardo Da Vinci',
+            'Changing the world one code at a time. - Unknown',
+            'In real open source, you have the right to control your own destiny - Linus Torvalds',
+            'Code long and prosper - Unknown',
+            'Success is something you attract by the person you become. - Jim Rohn',
+            'Why fit in when you were born to stand out? - Dr. Seuss',
+            'You are the average of the five people you spend the most time with. - Jim Rohn',
+            'If you run around with 9 losers pretty soon you’ll be the 10th loser. - Les Brown',
+            'You can change what you are and where you are by changing what goes into your mind. - Zig Ziglar',
+            'I think it is possible for ordinary people to choose to be extraordinary. - Elon Musk',
+            'Websites promote you 24/7: No employee will do that. - Paul Cookson',
+            'First, solve the problem. Then, write the code. - John Johnson',
+            'Programs must be written for people to read, and only incidentally for machines to execute. - Abelson',
+            'Programming can be fun, so can cryptography; however they should not be combined. - Kreitzberg',
+            'Before software can be reusable it first has to be usable. - Ralph Johnson',
+            'Without requirements or design, programming is the art of adding bugs to an empty text file. - Louis Srygley',
+            'Java is to JavaScript what Car is to Carpet. - Chris Heilmann'
+        ];
+
+    return quotes[Math.floor(Math.random() * Math.floor(quotes.length))];
+    }
+
+    browser.alarms.onAlarm.addListener(function (alarm) {
+        browser.notifications.create(motivationNotification, {
+            type: 'basic',
+            iconUrl: browser.extension.getURL('icons/icon64.png'),
+            title: 'Dev Quotes',
+            message: getRandom()
+        });
+    });
+
+    browser.browserAction.onClicked.addListener(() => {
+        var clearing = browser.notifications.clear(motivationNotification);
+        clearing.then(() => {
+            console.log('cleared');
+        });
+    });
+```
+
+</div>
+
+Again it the time to publish this simple addon to the mozilla addon store. I will follow the procedure, which i had explained in [part-2](https://medium.com/@nabendu82/creating-firefox-browser-extensions-2-ddf1f236f401) of this series.
+
+I had followed the procedure and submitted the firefox extension and it is **Awaiting Review** now.
+
+![Awaiting Review](https://ik.imagekit.io/thewebdev/FirefoxAddons/3/7_BqNg8T_fgE.png)*Awaiting Review*
+
+And the firefox addon was approved and made it way to the mozilla addons site [https://addons.mozilla.org/en-US/firefox/user/15774633/](https://addons.mozilla.org/en-US/firefox/user/15774633/)
+
+![Dev Quotes](https://ik.imagekit.io/thewebdev/FirefoxAddons/3/8_vqtO0VsAp.png)*Dev Quotes*
+
+Next, we will create another similar mozilla extension called **Drink Some Water**. As the name suggests, it will send remainder to drink some water every 2 hours.
+
+So, go ahead and create a folder **DrinkSomeWater** and inside it another folder **icons**. Inside that folder place an icon and name it **icon.png**
+
+Now, create a file **manifest.json** inside the folder **DrinkSomeWater** and put the below content in it.
+
+![manifest.json](https://ik.imagekit.io/thewebdev/FirefoxAddons/3/9_GBpNEr2ZXb.png)*manifest.json*
+
+Next, create a file **background.js** and put the below content in it. It is more simpler than the earlier addons, as it shows only one quote.
+
+![background.js](https://ik.imagekit.io/thewebdev/FirefoxAddons/3/10_wxb3cgaqts.png)*background.js*
+
+Again will to publish this addon to the mozilla addon store and will follow the procedure explained in [part-2](https://medium.com/@nabendu82/creating-firefox-browser-extensions-2-ddf1f236f401) of this series.
+
+I had followed the procedure and submitted the firefox extension and it is **Awaiting Review** now.
+
+![Drink Some Water](https://ik.imagekit.io/thewebdev/FirefoxAddons/3/11_S_hp3Uo3_d.png)*Drink Some Water*
+
+This complete part-3 of the series. You can find the code for the same in my github account [here](https://github.com/nabendu82/Addons).
