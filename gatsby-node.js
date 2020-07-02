@@ -54,7 +54,8 @@ exports.createPages = async ({ actions, graphql }) => {
 
     posts.forEach(({ node }) => {
         const { series } = node.frontmatter;
-        seriesArr = [...seriesArr, series];
+        if(series)
+            seriesArr = [...seriesArr, series];
     })
     seriesArr = [...new Set(seriesArr)];
 

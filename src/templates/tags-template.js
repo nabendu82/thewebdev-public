@@ -20,7 +20,7 @@ const tagsTemplate = ({ pageContext, data }) => {
                         const { title, date, slug } = node.frontmatter;
                         return (
                             <li key={slug}>
-                                <Link to={slug}>
+                                <Link to={`/${slug}`}>
                                     {title} ({date})
                                 </Link>
                             </li>
