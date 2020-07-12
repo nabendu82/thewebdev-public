@@ -1,0 +1,183 @@
+---
+title: React Tutorials - A beginners Guide - 2
+slug: react-tutorials-2
+image: ./react-tutorials-2.jpg
+date: 2020-07-13
+author: Rajat Negi
+twitter: https://twitter.com/rajat_naegi
+github: https://github.com/therajat08
+dev: https://dev.to/rajat_naegi
+series: React-tutorials
+tags: ['react', 'beginners', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+React uses the most recent version of javascript. If someone already knows this, they should skip this part.
+ 
+## let and const
+In ES6 (ECMAScript-6), two new ways of creating variable were created in addition to `var`. They are `let` and `const`. As the name might suggest `const` is used to create variables whose value remain constant. In contrast `let` type variables can have their values changed.
+This example shows how let can be used:
+ 
+![Alt Text](https://ik.imagekit.io/thewebdev/React-Tutorials/2/1_XLQMorh_vt.jpg)
+ 
+Below you can see, const value change is not allowed.
+ 
+![Alt Text](https://ik.imagekit.io/thewebdev/React-Tutorials/2/2_QDOolJ0oW.jpg)
+ 
+## Arrow functions:
+syntax of arrow function:
+
+<div className={styles.code__block}>
+
+```
+const fund = (<parameters>) =>{
+  //function body
+}
+ 
+// if the functions only have a return statement
+// it can also be written as
+ 
+const fund = (<parameters>) => <return statement>;
+ 
+// Note: we need to omit return keyword here
+```
+
+</div>
+
+With this notation, the `this` keyword behaves as it should. This syntax will be used more in this series.
+
+## Export and imports (Modules)
+We can have various modules in our project. And their functionality can be exploited using `export` and `import` keywords. There are certain syntactical differences while importing and exporting.
+Let's say we are exporting from files `picture.js` and `frame.js`
+
+<div className={styles.code__block}>
+
+```
+// picture.js
+ 
+const picture{
+  color : 'red';
+}
+ 
+export default picture;
+```
+
+</div>
+
+<div className={styles.code__block}>
+
+```
+// frame.js
+ 
+export const type = () => "silver";
+// note here we haven't used return
+ 
+export const size = 15;
+```
+
+</div>
+
+Now let we have to import these files into our `app.js`. The way we import is shown:
+
+<div className={styles.code__block}>
+
+```
+// app.js
+ 
+import pic from './picture.js'
+ 
+import {type} from './frame.js'
+import {size} from './frame.js'
+ 
+```
+
+</div>
+
+Note that we can import picture.js with any name. This is because of the default keyword used. They are called "default-exports".
+But for frame.js we use curly braces to specifically target what we want. They are called "named-exports".
+
+For frame.js:
+
+<div className={styles.code__block}>
+
+```
+// we can use alias as
+ 
+import {type as kind} from './frame.js'
+ 
+// or use * notation to import all the parts
+ 
+import * as bundle from './frame.js'
+```
+
+</div>
+
+
+## Classes
+It is created with `class` keyword and can contain *properties* and *methods*.
+
+![Alt Text](https://ik.imagekit.io/thewebdev/React-Tutorials/2/3_x7dBvLnsv.jpg)
+ 
+To instantiate a class we use `new` keyword
+![Alt Text](https://ik.imagekit.io/thewebdev/React-Tutorials/2/4_YOeQKY9MT.jpg)
+Through classes, we can take advantage of inheritance also.
+ 
+![Alt Text](https://ik.imagekit.io/thewebdev/React-Tutorials/2/5_ou_uC91Ya.jpg)
+Note:  we need to call `super()` function here as the constructor of the parent class (planets) also need to be executed. Clearly, with inheritance we are able to access the methods of both child and parent class. Classes can be used to create our react components.
+ 
+## Classes, properties and methods
+The next gen js also provides new ways of declaring our properties and methods.
+ - For instance, we can skip the constructor part and directly declare our property value.
+ - Also for methods, we can think of it as a property that stores function as a value.
+ 
+![Alt Text](https://ik.imagekit.io/thewebdev/React-Tutorials/2/6_758hWXRID.jpg)
+Since we are using arrow function as a property value here, we don't encounter problems with `this` keyword.
+Now using this syntax in our previous code.
+ 
+![Alt Text](https://ik.imagekit.io/thewebdev/React-Tutorials/2/7_6JmjXK6z3.jpg)
+ 
+## Spread and Rest operators
+The operator we are talking about here is `...` . It is called *Spread* or *Rest* depending on where it is used.
+- Rest
+  - when it is used to merge list of function arguments into an array.
+![Alt Text](https://ik.imagekit.io/thewebdev/React-Tutorials/2/8_VvZezejTZ.jpg)
+  - Here sortArgs can receive an indefinite number of input arguments. So we use `...` here.
+- Spread
+  - When it used to split array elements or object properties.
+![Alt Text](https://ik.imagekit.io/thewebdev/React-Tutorials/2/9_-V57QByaPR.jpg)
+  - Here all the elements of 'oldArray' are brought to newArray and additionally 1,2 are also added.
+  - similarly, we are pulling all the properties if 'oldObject' into 'newObject' and also added new property 'newProp'. If it was already present, the value will be overwritten.
+
+
+## Destructuring
+It allows storing array elements or object properties into variables. In a way, it seems similar to how rest and spread worked. But unlike them here we are extracting specific values and not the entire array or object.  
+![Alt Text](https://ik.imagekit.io/thewebdev/React-Tutorials/2/10_KK9qcnwue5.jpg)
+ 
+As we can see from the syntax. We assigned variable a and b values 'Hello' and 'Max' respectively. In the case of objects, we are using curly braces. Here we specify the property name.
+![Alt Text](https://ik.imagekit.io/thewebdev/React-Tutorials/2/11_Efq7AWk4Iy.jpg)
+ 
+## Reference and Primitive types
+ 
+Datatypes like strings, numbers and boolean are **primitive types**. We can simply copy the value of one such variable into another. And the new variable will contain the exact value. Changing value of **newNumber** will have no effect on **number**.
+ 
+![Alt Text](https://ik.imagekit.io/thewebdev/React-Tutorials/2/12_IdwrJ0Wglz.jpg)
+ 
+On the other hand arrays and objects are **Reference types**. Consider:
+![Alt Text](https://ik.imagekit.io/thewebdev/React-Tutorials/2/13_9eUWABJtHg.jpg)
+ 
+Here, we made a var **newCar** and assigned it to **car**. Now **newCar** is said to "point to car". or any operation we do on it will have an effect on **car**. We changed property of car. And console shows the same using newCar. Ofcourse to copy values and not the pointer we will use **spread operator**. Similar behaviour is seen in arrays also.
+ 
+ 
+## What we learned:
+  - let and const
+  - Arrow functions
+  - Exports and imports
+  - Classes
+  - Spread and Rest Operators
+  - Destructuring
+  - Reference and Primitive types
+ 
+Next part is the basic syntax and base features of React.
+
+ 
+Course: [Udemy](https://www.udemy.com/course/react-the-complete-guide-incl-redux/)
